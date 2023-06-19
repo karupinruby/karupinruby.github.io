@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>지원자 목록</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">지원자 목록</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">첫 화면</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="calender.html">달력</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="request.html">작업 요청</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="applicant.html">지원자 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inquiry.html">Inquiry</a>
+          </li>
+        </ul>
+        <span class="navbar-text ml-auto">
+          Manager phone number: 02-000-0000
+        </span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>지원자 목록</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>의뢰자</th>
+            <th>작업 내용</th>
+            <th>작업 일시</th>
+            <th>지원자</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>거주 기간</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>김어른</td>
+            <td>고추 심기</td>
+            <td>2023-06-05 - 2023-06-10</td>
+            <td>지원자 1</td>
+            <td>홍길동</td>
+            <td>30</td>
+            <td>5년</td>
+          </tr>
+          <tr>
+            <td>박성인</td>
+            <td>모내기</td>
+            <td>2023-06-10 - 2023-06-20</td>
+            <td>지원자 2</td>
+            <td>김철수</td>
+            <td>25</td>
+            <td>3년</td>
+          </tr>
+        </tbody>
+
+        <tbody id="applicantList">
+          <!-- Table rows will be dynamically generated here -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

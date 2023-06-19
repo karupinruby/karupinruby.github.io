@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>달력</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .navbar-calendar {
+        margin-bottom: 20px;
+      }
+      .calendar-container {
+        height: calc(
+          100vh - 56px
+        ); /* Calculate the remaining height of the screen */
+      }
+      .navbar-text-right {
+        margin-left: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-calendar">
+      <a class="navbar-brand" href="#">달력</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">첫 화면</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="calendar.html">달력</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="request.html">작업 요청</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="applicant.html">지원자 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inquiry.html">Inquiry</a>
+          </li>
+        </ul>
+        <span class="navbar-text navbar-text-right">
+          Manager phone number: 02-000-0000
+        </span>
+      </div>
+    </nav>
+
+    <div class="container-fluid calendar-container">
+      <div id="calendar"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ko.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#calendar").fullCalendar({
+          // Configure the calendar options and settings here
+          // For example:
+          locale: "ko", // Set the language to Korean
+          defaultView: "month",
+          events: [
+            {
+              title:
+                "김어른\n고추 심기, 8명 필요\n6월 5일부터 6월 9일까지\n일 15만 원",
+              start: "2023-06-05",
+              end: "2023-06-10",
+              backgroundColor: "#ffcc00", // Set the background color for the event
+            },
+            {
+              title:
+                "박성인\n모내기, 6명 필요\n6월 10일부터 6월 20일까지\n일 15만 원",
+              start: "2023-06-10",
+              end: "2023-06-20",
+              backgroundColor: "#0099ff", // Set the background color for the event
+            },
+            {
+              title:
+                "이영재\n상추 따기, 2명 필요\n6월 18일부터 6월 21일까지\n일 15만 원",
+              start: "2023-06-18",
+              end: "2023-06-21",
+              backgroundColor: "#00cc66", // Set the background color for the event
+            },
+            {
+              title:
+                "김대장\n비닐하우스 정비, 7명 필요\n6월 24일부터 6월 30일까지\n일 15만 원",
+              start: "2023-06-24",
+              end: "2023-06-30",
+              backgroundColor: "#800080", // Set the background color for the event
+            },
+            {
+              title:
+                "최진실\n방제, 4명 필요\n6월 27일부터 7월 4일까지\n일 15만 원",
+              start: "2023-06-27",
+              end: "2023-07-04",
+              backgroundColor: "#ff6699", // Set the background color for the event
+            },
+            // Add more events as needed
+          ],
+          eventRender: function (event, element) {
+            element.find(".fc-title").html(`
+            <b>의뢰자:</b> ${event.title.split("\n")[0]}<br>
+            <b>의뢰 내용:</b> ${event.title.split("\n")[1]}<br>
+            <b>작업 기간:</b> ${event.title.split("\n")[2]}<br>
+            <b>수당:</b> ${event.title.split("\n")[3]}
+          `);
+            element.css("background-color", event.backgroundColor);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

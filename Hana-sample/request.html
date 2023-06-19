@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>작업 요청</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">작업 요청</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">첫 화면</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="calender.html">달력</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="request.html">작업 요청</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="applicant.html">지원자 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inquiry.html">Inquiry</a>
+          </li>
+        </ul>
+        <span class="navbar-text ml-auto">
+          Manager phone number: 02-000-0000
+        </span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>작업 요청</h1>
+      <form>
+        <div class="form-group">
+          <label for="inputName">신청자:</label>
+          <input type="text" class="form-control" id="inputName" />
+        </div>
+        <div class="form-group">
+          <label for="inputTask">작업 내용:</label>
+          <input type="text" class="form-control" id="inputTask" />
+        </div>
+        <div class="form-group">
+          <label for="inputPeople">필요 인원:</label>
+          <input type="number" class="form-control" id="inputPeople" />
+          <small class="form-text text-muted">단위: 명</small>
+        </div>
+        <div class="form-group">
+          <label for="inputDate">작업 일시:</label>
+          <input type="text" class="form-control" id="inputDate" readonly />
+        </div>
+        <div class="form-group">
+          <label for="inputPay">일당:</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="inputPay" />
+            <div class="input-group-append">
+              <span class="input-group-text">원</span>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">요청하기</button>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#inputDate").daterangepicker({
+          minDate: moment().startOf("day"), // Set minimum date as today
+          showDropdowns: false, // Disable year and month dropdowns
+          locale: {
+            format: "YYYY-MM-DD",
+            applyLabel: "적용",
+            cancelLabel: "취소",
+            customRangeLabel: "기간 선택",
+          },
+          opens: "left", // Show the calendar on the left side
+          parentEl: ".container", // Set the container element
+          autoUpdateInput: false, // Disable auto-update of input field
+        });
+
+        // Set event listener to update input field value
+        $("#inputDate").on("apply.daterangepicker", function (ev, picker) {
+          $(this).val(
+            picker.startDate.format("YYYY-MM-DD") +
+              " - " +
+              picker.endDate.format("YYYY-MM-DD")
+          );
+        });
+
+        // Set style for date picker to black and white
+        $(".daterangepicker").addClass("bw-daterangepicker");
+      });
+    </script>
+
+    <style>
+      .bw-daterangepicker .drp-calendar {
+        filter: grayscale(100%);
+      }
+    </style>
+  </body>
+</html>
